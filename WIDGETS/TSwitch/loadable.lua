@@ -23,14 +23,14 @@ local menu = {
     buttons = {
         {name = "Beleuchtung1", button1 = "Licht11", button2 = "Licht12", button3 = "Licht13", button4 = "Licht14", button5 = "Licht15", button6 = "Licht17", button7 = "Licht17", button8 = "Licht18"},
         {name = "Beleuchtung2", button1 = "Licht21", button2 = "Licht22", button3 = "Licht23", button4 = "Licht24", button5 = "Licht25", button6 = "Licht27", button7 = "Licht27", button8 = "Licht28"},
+        {name = "Lichtboot", button1 = "Blaulicht", button2 = "Radar", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
         {name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
         {name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
         {name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-        {name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
+	{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
+	{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
+	{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
+	{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
 	}	
     
 }
@@ -52,10 +52,11 @@ local ROW = 80
 local WIDTH = 120
 local HEIGHT = 60
 
+local lastTime = 0;
+
 -- Called by gui in full screen mode
 local function drawFull()
-   print("drawFull");
-
+   --print("drawFull");
 end
 
 local function getls(switch)
@@ -114,11 +115,11 @@ end
 local function doToggle1(toggleButton)
   local ls = options.Switch1LS
   if toggleButton.value then
-	model.setLogicalSwitch(ls-1, {func=3,v1=100,v2=0})
-	--setStickySwitch(ls-1, true)     -- Test für egdeTX 2.6
+	--model.setLogicalSwitch(ls-1, {func=3,v1=100,v2=0})
+	setStickySwitch(ls-1, true)     -- Test für egdeTX 2.6
   else
-	model.setLogicalSwitch(ls-1, {func=1,v1=100,v2=0})
-	--setStickySwitch(ls-1, false)    -- Test für egdeTX 2.6
+	--model.setLogicalSwitch(ls-1, {func=1,v1=100,v2=0})
+	setStickySwitch(ls-1, false)    -- Test für egdeTX 2.6
   end
 end
 
@@ -126,9 +127,11 @@ end
 local function doToggle2(toggleButton)
   local ls = options.Switch1LS
   if toggleButton.value then
-	model.setLogicalSwitch(ls, {func=3,v1=100,v2=0})
+	--model.setLogicalSwitch(ls, {func=3,v1=100,v2=0})
+	setStickySwitch(ls, true)     -- Test für egdeTX 2.6
   else
-	model.setLogicalSwitch(ls, {func=1,v1=100,v2=0})
+	--model.setLogicalSwitch(ls, {func=1,v1=100,v2=0})
+	setStickySwitch(ls, false)    -- Test für egdeTX 2.6
   end
 end
 
@@ -136,9 +139,11 @@ end
 local function doToggle3(toggleButton)
   local ls = options.Switch1LS
   if toggleButton.value then
-	model.setLogicalSwitch(ls+1, {func=3,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+1, {func=3,v1=100,v2=0})
+	setStickySwitch(ls+1, true)     -- Test für egdeTX 2.6
   else
-	model.setLogicalSwitch(ls+1, {func=1,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+1, {func=1,v1=100,v2=0})
+	setStickySwitch(ls+1, false)    -- Test für egdeTX 2.6
   end
 end
 
@@ -146,9 +151,11 @@ end
 local function doToggle4(toggleButton)
   local ls = options.Switch1LS
   if toggleButton.value then
-	model.setLogicalSwitch(ls+2, {func=3,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+2, {func=3,v1=100,v2=0})
+	setStickySwitch(ls+2, true)     -- Test für egdeTX 2.6
   else
-	model.setLogicalSwitch(ls+2, {func=1,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+2, {func=1,v1=100,v2=0})
+	setStickySwitch(ls+2, false)    -- Test für egdeTX 2.6
   end
 end
 
@@ -156,9 +163,11 @@ end
 local function doToggle5(toggleButton)
   local ls = options.Switch1LS
   if toggleButton.value then
-	model.setLogicalSwitch(ls+3, {func=3,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+3, {func=3,v1=100,v2=0})
+	setStickySwitch(ls+3, true)     -- Test für egdeTX 2.6
   else
-	model.setLogicalSwitch(ls+3, {func=1,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+3, {func=1,v1=100,v2=0})
+	setStickySwitch(ls+3, false)    -- Test für egdeTX 2.6
   end
 end
 
@@ -166,9 +175,11 @@ end
 local function doToggle6(toggleButton)
   local ls = options.Switch1LS
   if toggleButton.value then
-	model.setLogicalSwitch(ls+4, {func=3,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+4, {func=3,v1=100,v2=0})
+	setStickySwitch(ls+4, true)     -- Test für egdeTX 2.6
   else
-	model.setLogicalSwitch(ls+4, {func=1,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+4, {func=1,v1=100,v2=0})
+	setStickySwitch(ls+4, false)    -- Test für egdeTX 2.6
   end
 end
 
@@ -176,9 +187,11 @@ end
 local function doToggle7(toggleButton)
   local ls = options.Switch1LS
   if toggleButton.value then
-	model.setLogicalSwitch(ls+5, {func=3,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+5, {func=3,v1=100,v2=0})
+	setStickySwitch(ls+5, true)     -- Test für egdeTX 2.6
   else
-	model.setLogicalSwitch(ls+5, {func=1,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+5, {func=1,v1=100,v2=0})
+	setStickySwitch(ls+5, false)    -- Test für egdeTX 2.6
   end
 end
 
@@ -186,9 +199,11 @@ end
 local function doToggle8(toggleButton)
   local ls = options.Switch1LS
   if toggleButton.value then
-	model.setLogicalSwitch(ls+6, {func=3,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+6, {func=3,v1=100,v2=0})
+	setStickySwitch(ls+6, true)     -- Test für egdeTX 2.6
   else
-	model.setLogicalSwitch(ls+6, {func=1,v1=100,v2=0})
+	--model.setLogicalSwitch(ls+6, {func=1,v1=100,v2=0})
+	setStickySwitch(ls+6, false)    -- Test für egdeTX 2.6
   end
 end
 
@@ -209,6 +224,38 @@ do -- Initialization happens here
     x = LEFT
     y = y + ROW
   end
+  
+  for variable = -1, 6 do
+    local fieldinfo = getFieldInfo('ls1')   -- Source ID fuer "LS1" suchen lassen, je nach LUA Version und Sender unterschiedlich
+	print("LS : "..fieldinfo['id']);
+	print("LS : "..variable )
+	--if options.Switch1LS + variable > 34 then
+    local ls = model.getLogicalSwitch(options.Switch1LS + variable);
+    	print("LS : "..fieldinfo['id']);
+	if (ls.func ~= LS_FUNC_STICKY) then
+		model.setLogicalSwitch(options.Switch1LS + variable, {func = LS_FUNC_STICKY,v1 = 85 + options.Switch1LS + variable});
+        setStickySwitch(options.Switch1LS + variable, false);
+	else
+	    --print("LS :a " .. options.Switch1LS + variable);
+		setStickySwitch(options.Switch1LS + variable, false);
+		
+	end	
+  end
+  
+     for variable = -1, 6 do
+  
+     setStickySwitch(20, false);
+	 print("LS : "..variable )
+	 if (getLogicalSwitchValue(20)==true) then
+	    setStickySwitch(20, false);
+		print("LS : V "..variable )
+		variable = 3
+	 else
+	    print("LS :false")
+	 end
+  
+  end
+ 
   
   gui.widgetRefresh = drawZone
   gui.fullScreenRefresh = drawFull
