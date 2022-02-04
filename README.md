@@ -18,7 +18,7 @@ setting start logical switche and config description
 
 ![](https://github.com/Ziege-One/TSwitch/blob/main/docs/widget_settings.png?raw=true)
 
-widet
+widget
 
 ![](https://github.com/Ziege-One/TSwitch/blob/main/docs/widget.png?raw=true)
 
