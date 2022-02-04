@@ -2,9 +2,9 @@
 -- TSwitch                                                               --
 --                                                                       --
 -- Author:  DerRCModellbauer                                             --
--- Original Author:  Jesper Frickmann                                    --                                   
+-- Original Author:  Jesper Frickmann                                    --
 -- Date:    2022-01-16                                                   --
--- Version: 0.1                                                          --                                                       
+-- Version: 0.3                                                          --
 --                                                                       --
 -- Copyright (C) EdgeTX                                                  --
 --                                                                       --
@@ -16,17 +16,18 @@
 --                                                                       --
 -- See the GNU General Public License for more details.                  --
 ---------------------------------------------------------------------------
+
 local name = "TSwitch"
-local libgui
+local libGUI
 
 -- Return GUI library table
 function loadGUI()
-  if not libgui then
-  -- Loadable code chunk is called immediately and returns TSwitch
-  	libgui = loadScript("/WIDGETS/" .. name .. "/libgui.lua")
-  end
+	if not libGUI then
+	-- Loadable code chunk is called immediately and returns libGUI
+		libGUI = loadScript("/WIDGETS/" .. name .. "/libgui.lua")
+	end
   
-  return libgui()
+	return libGUI()
 end
 
 ---------------------------------------------------------------------------
@@ -37,31 +38,31 @@ end
 ---------------------------------------------------------------------------
 
 local function create(zone, options)
-  -- Loadable code chunk is called immediately and returns a widget table
-  return loadScript("/WIDGETS/" .. name .. "/loadable.lua")(zone, options)
+	-- Loadable code chunk is called immediately and returns a widget table
+	return loadScript("/WIDGETS/" .. name .. "/loadable.lua")(zone, options)
 end
 
 local function refresh(widget, event, touchState)
-  widget.refresh(event, touchState)
+	widget.refresh(event, touchState)
 end
 
 local function background(widget)
 end
 
 local options = {
-  { "Switch1LS", VALUE, 30, 1, 64 },
-  { "Config", VALUE, 1, 1, 10 }  
+	{ "Switch1LS", VALUE, 30, 1, 64 },
+	{ "Config", VALUE, 1, 1, 10 }  
 }
 
 local function update(widget, options)
-  widget.update(options)
+	widget.update(options)
 end
 
 return {
-  name = name,
-  create = create,
-  refresh = refresh,
-  background = background,
-  options = options,
-  update = update
+	name = name,
+	create = create,
+	refresh = refresh,
+	background = background,
+	options = options,
+	update = update
 }
