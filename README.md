@@ -14,9 +14,13 @@ fullscreen 2 Buttons are switched
 
 ![](https://github.com/Ziege-One/TSwitch/blob/main/docs/fullscreen.png?raw=true)
 
-setting start logical switche and config description
+setting start logical switch and config description 1-10
 
 ![](https://github.com/Ziege-One/TSwitch/blob/main/docs/widget_settings.png?raw=true)
+
+config description 1-10 in loadable.lua (red title and green button description) 
+
+![](https://github.com/Ziege-One/TSwitch/blob/main/docs/config.png?raw=true)
 
 widget
 
