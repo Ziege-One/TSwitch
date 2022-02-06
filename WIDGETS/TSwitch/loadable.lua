@@ -16,7 +16,7 @@
 --                                                                       --
 -- See the GNU General Public License for more details.                  --
 ---------------------------------------------------------------------------
-local version = "0.3"
+local version = "0.4"
 
 -- Button description; name = title; button = button label; starts with config 1 to 10 
 local menu = {
@@ -183,39 +183,39 @@ end
 -- Draw in widget mode
 function libGUI.widgetRefresh()
 	lcd.drawRectangle(0, 0, zone.w, zone.h, COLOR_THEME_EDIT)
-	lcd.drawText(5, 5, menu.buttons[options.Config].name)
+	lcd.drawText(5, 2, menu.buttons[options.Config].name)
 	if getls(options.Switch1LS) then
-		lcd.drawFilledRectangle(5, 27, 60, 15, COLOR_THEME_ACTIVE)
+		lcd.drawFilledRectangle(  5, 22, 90, 14, COLOR_THEME_ACTIVE)
 	end
 	if getls(options.Switch1LS + 1) then  
-		lcd.drawFilledRectangle(70, 27, 60, 15, COLOR_THEME_ACTIVE)
+		lcd.drawFilledRectangle(  5, 37, 90, 14, COLOR_THEME_ACTIVE)
 	end
 	if getls(options.Switch1LS + 2)  then    
-		lcd.drawFilledRectangle(135, 27, 60, 15, COLOR_THEME_ACTIVE)
+		lcd.drawFilledRectangle(  5, 52, 90, 14, COLOR_THEME_ACTIVE)
 	end
 	if getls(options.Switch1LS + 3)  then    
-	lcd.drawFilledRectangle(5, 47, 60, 15, COLOR_THEME_ACTIVE)
+		lcd.drawFilledRectangle(  5, 67, 90, 14, COLOR_THEME_ACTIVE)
 	end
 	if getls(options.Switch1LS + 4)  then    
-		lcd.drawFilledRectangle(70, 47, 60, 15, COLOR_THEME_ACTIVE)
+		lcd.drawFilledRectangle(100, 22, 90, 14, COLOR_THEME_ACTIVE)
 	end
 	if getls(options.Switch1LS + 5)  then    
-		lcd.drawFilledRectangle(135, 47, 60, 15, COLOR_THEME_ACTIVE)
+		lcd.drawFilledRectangle(100, 37, 90, 14, COLOR_THEME_ACTIVE)
 	end
 	if getls(options.Switch1LS + 6)  then    
-		lcd.drawFilledRectangle(5, 67, 60, 15, COLOR_THEME_ACTIVE)
+		lcd.drawFilledRectangle(100, 52, 90, 14, COLOR_THEME_ACTIVE)
 	end
 	if getls(options.Switch1LS + 7)  then    
-		lcd.drawFilledRectangle(70, 67, 60, 15, COLOR_THEME_ACTIVE)
+		lcd.drawFilledRectangle(100, 67, 90, 14, COLOR_THEME_ACTIVE)
 	end
-	lcd.drawText(5, 25, menu.buttons[options.Config].button1,SMLSIZE)
-	lcd.drawText(70, 25, menu.buttons[options.Config].button2,SMLSIZE)
-	lcd.drawText(135, 25, menu.buttons[options.Config].button3,SMLSIZE)
-	lcd.drawText(5, 45, menu.buttons[options.Config].button4,SMLSIZE)
-	lcd.drawText(70, 45, menu.buttons[options.Config].button5,SMLSIZE)
-	lcd.drawText(135, 45, menu.buttons[options.Config].button6,SMLSIZE)
-	lcd.drawText(5, 65, menu.buttons[options.Config].button7,SMLSIZE)
-	lcd.drawText(70, 65, menu.buttons[options.Config].button8,SMLSIZE)
+	lcd.drawText(  6, 21, menu.buttons[options.Config].button1,SMLSIZE)
+	lcd.drawText(  6, 36, menu.buttons[options.Config].button2,SMLSIZE)
+	lcd.drawText(  6, 51, menu.buttons[options.Config].button3,SMLSIZE)
+	lcd.drawText(  6, 66, menu.buttons[options.Config].button4,SMLSIZE)
+	lcd.drawText(101, 21, menu.buttons[options.Config].button5,SMLSIZE)
+	lcd.drawText(101, 36, menu.buttons[options.Config].button6,SMLSIZE)
+	lcd.drawText(101, 51, menu.buttons[options.Config].button7,SMLSIZE)
+	lcd.drawText(101, 66, menu.buttons[options.Config].button8,SMLSIZE)
 	UPDATE = false
 end
 
