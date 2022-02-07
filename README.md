@@ -28,7 +28,7 @@ widget
 
 widget with status of logical switches
 
-![](https://github.com/Ziege-One/TSwitch/blob/main/docs/widget_status?raw=true)
+![](https://github.com/Ziege-One/TSwitch/blob/main/docs/widget_status.png?raw=true)
 
 # video
 part 1 (only German)
