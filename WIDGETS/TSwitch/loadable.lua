@@ -16,7 +16,7 @@
 --                                                                       --
 -- See the GNU General Public License for more details.                  --
 ---------------------------------------------------------------------------
-local version = "0.4"
+local version = "0.5"
 
 -- Button description; name = title; button = button label; starts with config 1 to 10 
 local menu = {
@@ -228,10 +228,10 @@ function widget.update(opt)
 	options = opt
     for variable = -1, 6 do
 		local ls = model.getLogicalSwitch(options.Switch1LS + variable);
-			--set setLogicalSwitch to STICKY and v1 to it self (because start up set to false) will be fix in next version
+			--set setLogicalSwitch to STICKY and v1 to it self (because start up set to false) will be fix in next version (fix in 2.7)
 		if (ls.func ~= LS_FUNC_STICKY) then
-			model.setLogicalSwitch(options.Switch1LS + variable, {func = LS_FUNC_STICKY,v1 = 85 + options.Switch1LS + variable});
-			--model.setLogicalSwitch(options.Switch1LS + variable, {func = LS_FUNC_STICKY});
+			--model.setLogicalSwitch(options.Switch1LS + variable, {func = LS_FUNC_STICKY,v1 = 85 + options.Switch1LS + variable});
+			model.setLogicalSwitch(options.Switch1LS + variable, {func = LS_FUNC_STICKY});
 			setStickySwitch(options.Switch1LS + variable, false);
 		else
 			setStickySwitch(options.Switch1LS + variable, false);
