@@ -6,6 +6,7 @@ Sourcen LibGUI :https://github.com/EdgeTX/edgetx-sdcard/tree/master/sdcard/horus
 # functions:
 Touch buttons in full screen toggle the logical switches.
 The status of the logical switches is displayed in the widget
+With "taster1-8" in the config, the buttons can be used as pushbutton. The number is the time (100 = one second) (brown)
 
 # description
 
@@ -18,7 +19,7 @@ setting start logical switch and config description 1-10
 
 ![](https://github.com/Ziege-One/TSwitch/blob/main/docs/widget_settings.png?raw=true)
 
-config description 1-10 in loadable.lua (red title and green button description) 
+config description 1-10 in loadable.lua (red title and green button description brown are pushbutton. 
 
 ![](https://github.com/Ziege-One/TSwitch/blob/main/docs/config.png?raw=true)
 

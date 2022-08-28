@@ -16,21 +16,112 @@
 --                                                                       --
 -- See the GNU General Public License for more details.                  --
 ---------------------------------------------------------------------------
-local version = "0.5"
+local version = "0.6"
 
 -- Button description; name = title; button = button label; starts with config 1 to 10 
 local menu = {
     buttons = {
-		{name = "Beleuchtung1", button1 = "Licht11", button2 = "Licht12", button3 = "Licht13", button4 = "Licht14", button5 = "Licht15", button6 = "Licht17", button7 = "Licht17", button8 = "Licht18"},
-		{name = "Beleuchtung2", button1 = "Licht21", button2 = "Licht22", button3 = "Licht23", button4 = "Licht24", button5 = "Licht25", button6 = "Licht27", button7 = "Licht27", button8 = "Licht28"},
-		{name = "Lichtboot", button1 = "Blaulicht", button2 = "Radar", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
-		{name = "Licht", button1 = "1", button2 = "2", button3 = "3", button4 = "4", button5 = "5", button6 = "7", button7 = "7", button8 = "8"},
+	    -- Config 1
+		{name = "DGzRS Hecht",
+		button1 = "Deckslicht", taster1 = 100,
+		button2 = "Scheinw.", taster2 = 200,
+		button3 = "Positionsl.", 
+		button4 = "Hecklicht", 
+		button5 = "Suchschein", 
+		button6 = "Blaulicht", 
+		button7 = "Bucklicht", 
+		button8 = "Toplicht"},
+		-- Config 2
+		{name = "Beleuchtung2",
+		button1 = "Licht21",
+		button2 = "Licht22",
+		button3 = "Licht23",
+		button4 = "Licht24",
+		button5 = "Licht25",
+		button6 = "Licht27",
+		button7 = "Licht27",
+		button8 = "Licht28"},
+		-- Config 3
+		{name = "Lichtboot",
+		button1 = "Blaulicht", taster1 = 200,
+		button2 = "Radar", taster2 = 0, 
+		button3 = "3", taster3 = 1000, 
+		button4 = "4", taster4 = 0, 
+		button5 = "5", taster5 = 100, 
+		button6 = "7", taster6 = 0, 
+		button7 = "7", taster7 = 100, 
+		button8 = "8", taster8 = 0},
+		-- Config 4
+		{name = "Licht", 
+		button1 = "1", 
+		button2 = "2", 
+		button3 = "3", 
+		button4 = "4", 
+		button5 = "5", 
+		button6 = "7", 
+		button7 = "7", 
+		button8 = "8"},
+		-- Config 5
+		{name = "Licht", 
+		button1 = "1", 
+		button2 = "2", 
+		button3 = "3", 
+		button4 = "4", 
+		button5 = "5", 
+		button6 = "7", 
+		button7 = "7", 
+		button8 = "8"},
+		-- Config 6
+		{name = "Licht", 
+		button1 = "1", 
+		button2 = "2", 
+		button3 = "3", 
+		button4 = "4", 
+		button5 = "5", 
+		button6 = "7", 
+		button7 = "7", 
+		button8 = "8"},
+		-- Config 7
+		{name = "Licht", 
+		button1 = "1", 
+		button2 = "2", 
+		button3 = "3", 
+		button4 = "4", 
+		button5 = "5", 
+		button6 = "7", 
+		button7 = "7", 
+		button8 = "8"},
+		-- Config 8
+		{name = "Licht", 
+		button1 = "1", 
+		button2 = "2", 
+		button3 = "3", 
+		button4 = "4", 
+		button5 = "5", 
+		button6 = "7", 
+		button7 = "7", 
+		button8 = "8"},
+		-- Config 9
+		{name = "Licht", 
+		button1 = "1", 
+		button2 = "2", 
+		button3 = "3", 
+		button4 = "4", 
+		button5 = "5", 
+		button6 = "7", 
+		button7 = "7", 
+		button8 = "8"},
+		-- Config 10
+		{name = "Licht", 
+		button1 = "1", 
+		button2 = "2", 
+		button3 = "3", 
+		button4 = "4", 
+		button5 = "5", 
+		button6 = "7", 
+		button7 = "7", 
+		button8 = "8"},		
+
 	}	
 }
 
@@ -64,14 +155,6 @@ local libGUI = loadGUI()
 -- Instantiate a new GUI object
 local gui = libGUI.newGUI()
 
-local function getls(switch)
-	if getValue("ls"..switch)== 1024 then
-		return true 
-	else
-		return false
-	end
-end
-
 -- Make a minimize button from a custom element
 local custom = { }
 
@@ -101,42 +184,62 @@ local toggleButton6 = gui.toggleButton(COL3, TOP + 1 * ROW, WIDTH, HEIGHT, menu.
 local toggleButton7 = gui.toggleButton(COL3, TOP + 2 * ROW, WIDTH, HEIGHT, menu.buttons[options.Config].button7, false, nil)
 local toggleButton8 = gui.toggleButton(COL3, TOP + 3 * ROW, WIDTH, HEIGHT, menu.buttons[options.Config].button8, false, nil)
 
+----------------------------------------------------------------------------------------------------- Taster
+local LST = {0,0,0,0,0,0,0,0,0}
+----------------------------------------------------------------------------------------------------- Taster
+
 -- Draw on the screen before adding gui elements
 function gui.fullScreenRefresh()
-	--print("TSwitch :full")
+	-- print("TSwitch :full")
 	-- Draw header
 	lcd.drawFilledRectangle(0, 0, LCD_W, HEADER, COLOR_THEME_SECONDARY1)
 	lcd.drawText(COL1, HEADER / 2, menu.buttons[options.Config].name, VCENTER + DBLSIZE + libGUI.colors.primary2)
 	lcd.drawText(COL4, HEADER / 2, "Version: " ..version, VCENTER + SMLSIZE);
 	-- update the buttons if switch extern (onetime)
 	if not UPDATE then
-		if getls(options.Switch1LS) then
+		if getLogicalSwitchValue(options.Switch1LS-1) then
 			toggleButton1.value = true
+		else
+			toggleButton1.value = false
 		end
-		if getls(options.Switch1LS+1) then
+		if getLogicalSwitchValue(options.Switch1LS-0) then
 			toggleButton2.value = true
+		else
+			toggleButton2.value = false			
 		end
-		if getls(options.Switch1LS+2) then
+		if getLogicalSwitchValue(options.Switch1LS+1) then
 			toggleButton3.value = true
+		else
+			toggleButton3.value = false			
 		end
-		if getls(options.Switch1LS+3) then
+		if getLogicalSwitchValue(options.Switch1LS+2) then
 			toggleButton4.value = true
+		else
+			toggleButton4.value = false			
 		end
-		if getls(options.Switch1LS+4) then
+		if getLogicalSwitchValue(options.Switch1LS+3) then
 			toggleButton5.value = true
+		else
+			toggleButton5.value = false			
 		end
-		if getls(options.Switch1LS+5) then
+		if getLogicalSwitchValue(options.Switch1LS+4) then
 			toggleButton6.value = true
+		else
+			toggleButton6.value = false			
 		end
-		if getls(options.Switch1LS+6) then
+		if getLogicalSwitchValue(options.Switch1LS+5) then
 			toggleButton7.value = true
+		else
+			toggleButton7.value = false			
 		end
-		if getls(options.Switch1LS+7) then
+		if getLogicalSwitchValue(options.Switch1LS+6) then
 			toggleButton8.value = true
+		else
+			toggleButton8.value = false			
 		end	
 		UPDATE = true
 	end
-  
+	
 	-- Button
 	if toggleButton1.value then
 		setStickySwitch(options.Switch1LS-1, true)     -- EdgeTX 2.6 or higher
@@ -178,34 +281,111 @@ function gui.fullScreenRefresh()
 	else
 		setStickySwitch(options.Switch1LS+6, false)    -- EdgeTX 2.6 or higher
 	end
+	----------------------------------------------------------------------------------------------------- Taster
+	
+	local t = getTime();
+	
+	if (menu.buttons[options.Config].taster1) then
+		if toggleButton1.value and not getLogicalSwitchValue(options.Switch1LS-1) and (menu.buttons[options.Config].taster1 >= 1) then
+			LST[1] = t + menu.buttons[options.Config].taster1;
+		end
+		if (t > LST[1]) and (menu.buttons[options.Config].taster1 >= 1) then
+			toggleButton1.value = false
+		end
+    end	
+	
+	if (menu.buttons[options.Config].taster2) then
+		if toggleButton2.value and not getLogicalSwitchValue(options.Switch1LS-0) and (menu.buttons[options.Config].taster2 >= 1) then
+			LST[2] = t + menu.buttons[options.Config].taster2;
+		end
+		if (t > LST[2]) and (menu.buttons[options.Config].taster2 >= 1) then
+			toggleButton2.value = false
+		end
+	end
+    
+	if menu.buttons[options.Config].taster3 then
+		if toggleButton3.value and not getLogicalSwitchValue(options.Switch1LS+1) and (menu.buttons[options.Config].taster3 >= 1) then
+			LST[3] = t + menu.buttons[options.Config].taster3;
+		end
+		if (t > LST[3]) and (menu.buttons[options.Config].taster3 >= 1) then
+			toggleButton3.value = false
+		end	
+	end	
+	
+	if (menu.buttons[options.Config].taster4) then
+		if toggleButton4.value and not getLogicalSwitchValue(options.Switch1LS+2) and (menu.buttons[options.Config].taster4 >= 1) then
+			LST[4] = t + menu.buttons[options.Config].taster4;
+		end
+		if (t > LST[4]) and (menu.buttons[options.Config].taster4 >= 1) then
+			toggleButton4.value = false
+		end	
+	end
+	
+	if (menu.buttons[options.Config].taster5) then
+		if toggleButton5.value and not getLogicalSwitchValue(options.Switch1LS+3) and (menu.buttons[options.Config].taster5 >= 1) then
+			LST[5] = t + menu.buttons[options.Config].taster5;
+		end
+		if (t > LST[5]) and (menu.buttons[options.Config].taster5 >= 1) then
+			toggleButton5.value = false
+		end
+	end
+
+	if (menu.buttons[options.Config].taster6) then
+		if toggleButton6.value and not getLogicalSwitchValue(options.Switch1LS+4) and (menu.buttons[options.Config].taster6 >= 1) then
+			LST[6] = t + menu.buttons[options.Config].taster6;
+		end
+		if (t > LST[6]) and (menu.buttons[options.Config].taster6 >= 1) then
+			toggleButton6.value = false
+		end	
+	end
+
+	if (menu.buttons[options.Config].taster7) then
+		if toggleButton7.value and not getLogicalSwitchValue(options.Switch1LS+5) and (menu.buttons[options.Config].taster7 >= 1) then
+			LST[7] = t + menu.buttons[options.Config].taster7;
+		end
+		if (t > LST[7]) and (menu.buttons[options.Config].taster7 >= 1) then
+			toggleButton7.value = false
+		end
+	end
+
+	if (menu.buttons[options.Config].taster8) then
+		if toggleButton8.value and not getLogicalSwitchValue(options.Switch1LS+6) and (menu.buttons[options.Config].taster8 >= 1) then
+			LST[8] = t + menu.buttons[options.Config].taster8;
+		end
+		if (t > LST[8]) and (menu.buttons[options.Config].taster8 >= 1) then
+			toggleButton8.value = false
+		end
+	end
+	----------------------------------------------------------------------------------------------------- Taster
+	
 end
 
 -- Draw in widget mode
 function libGUI.widgetRefresh()
 	lcd.drawRectangle(0, 0, zone.w, zone.h, COLOR_THEME_EDIT)
 	lcd.drawText(5, 2, menu.buttons[options.Config].name)
-	if getls(options.Switch1LS) then
+	if getLogicalSwitchValue(options.Switch1LS - 1) then
 		lcd.drawFilledRectangle(  5, 22, 90, 14, COLOR_THEME_ACTIVE)
 	end
-	if getls(options.Switch1LS + 1) then  
+	if getLogicalSwitchValue(options.Switch1LS + 0) then  
 		lcd.drawFilledRectangle(  5, 37, 90, 14, COLOR_THEME_ACTIVE)
 	end
-	if getls(options.Switch1LS + 2)  then    
+	if getLogicalSwitchValue(options.Switch1LS + 1)  then    
 		lcd.drawFilledRectangle(  5, 52, 90, 14, COLOR_THEME_ACTIVE)
 	end
-	if getls(options.Switch1LS + 3)  then    
+	if getLogicalSwitchValue(options.Switch1LS + 2)  then    
 		lcd.drawFilledRectangle(  5, 67, 90, 14, COLOR_THEME_ACTIVE)
 	end
-	if getls(options.Switch1LS + 4)  then    
+	if getLogicalSwitchValue(options.Switch1LS + 3)  then    
 		lcd.drawFilledRectangle(100, 22, 90, 14, COLOR_THEME_ACTIVE)
 	end
-	if getls(options.Switch1LS + 5)  then    
+	if getLogicalSwitchValue(options.Switch1LS + 4)  then    
 		lcd.drawFilledRectangle(100, 37, 90, 14, COLOR_THEME_ACTIVE)
 	end
-	if getls(options.Switch1LS + 6)  then    
+	if getLogicalSwitchValue(options.Switch1LS + 5)  then    
 		lcd.drawFilledRectangle(100, 52, 90, 14, COLOR_THEME_ACTIVE)
 	end
-	if getls(options.Switch1LS + 7)  then    
+	if getLogicalSwitchValue(options.Switch1LS + 6)  then    
 		lcd.drawFilledRectangle(100, 67, 90, 14, COLOR_THEME_ACTIVE)
 	end
 	lcd.drawText(  6, 21, menu.buttons[options.Config].button1,SMLSIZE)
