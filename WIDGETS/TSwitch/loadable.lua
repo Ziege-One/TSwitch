@@ -16,15 +16,15 @@
 --                                                                       --
 -- See the GNU General Public License for more details.                  --
 ---------------------------------------------------------------------------
-local version = "0.6"
+local version = "0.7"
 
 -- Button description; name = title; button = button label; starts with config 1 to 10 
 local menu = {
     buttons = {
 	    -- Config 1
 		{name = "DGzRS Hecht",
-		button1 = "Deckslicht", taster1 = 100,
-		button2 = "Scheinw.", taster2 = 200,
+		button1 = "Deckslicht",
+		button2 = "Scheinw.",
 		button3 = "Positionsl.", 
 		button4 = "Hecklicht", 
 		button5 = "Suchschein", 
@@ -48,7 +48,7 @@ local menu = {
 		button3 = "3", taster3 = 1000, 
 		button4 = "4", taster4 = 0, 
 		button5 = "5", taster5 = 100, 
-		button6 = "7", taster6 = 0, 
+		button6 = "6", taster6 = 0, 
 		button7 = "7", taster7 = 100, 
 		button8 = "8", taster8 = 0},
 		-- Config 4
@@ -58,7 +58,7 @@ local menu = {
 		button3 = "3", 
 		button4 = "4", 
 		button5 = "5", 
-		button6 = "7", 
+		button6 = "6", 
 		button7 = "7", 
 		button8 = "8"},
 		-- Config 5
@@ -68,7 +68,7 @@ local menu = {
 		button3 = "3", 
 		button4 = "4", 
 		button5 = "5", 
-		button6 = "7", 
+		button6 = "6", 
 		button7 = "7", 
 		button8 = "8"},
 		-- Config 6
@@ -78,7 +78,7 @@ local menu = {
 		button3 = "3", 
 		button4 = "4", 
 		button5 = "5", 
-		button6 = "7", 
+		button6 = "6", 
 		button7 = "7", 
 		button8 = "8"},
 		-- Config 7
@@ -88,7 +88,7 @@ local menu = {
 		button3 = "3", 
 		button4 = "4", 
 		button5 = "5", 
-		button6 = "7", 
+		button6 = "6", 
 		button7 = "7", 
 		button8 = "8"},
 		-- Config 8
@@ -98,7 +98,7 @@ local menu = {
 		button3 = "3", 
 		button4 = "4", 
 		button5 = "5", 
-		button6 = "7", 
+		button6 = "6", 
 		button7 = "7", 
 		button8 = "8"},
 		-- Config 9
@@ -108,7 +108,7 @@ local menu = {
 		button3 = "3", 
 		button4 = "4", 
 		button5 = "5", 
-		button6 = "7", 
+		button6 = "6", 
 		button7 = "7", 
 		button8 = "8"},
 		-- Config 10
@@ -118,7 +118,7 @@ local menu = {
 		button3 = "3", 
 		button4 = "4", 
 		button5 = "5", 
-		button6 = "7", 
+		button6 = "6", 
 		button7 = "7", 
 		button8 = "8"},		
 
@@ -162,14 +162,14 @@ function custom.draw(focused)
 	lcd.drawRectangle(LCD_W - 34, 6, 28, 28, libGUI.colors.primary2)
 	lcd.drawFilledRectangle(LCD_W - 30, 19, 20, 3, libGUI.colors.primary2)
 	if focused then
-		custom.drawFocus(LCD_W - 34, 6, 28, 28)
+		custom.drawFocus(LCD_W - 30, 6, 26, 26, libGUI.colors.focus)
 	end
 end
 
 function custom.onEvent(event, touchState)
-	if event == EVT_VIRTUAL_ENTER then
-		lcd.exitFullScreen()
-	end
+  if (touchState) or (event and event == EVT_VIRTUAL_EXIT) or (event and event == EVT_VIRTUAL_ENTER) then
+    lcd.exitFullScreen()
+  end
 end
 
 gui.custom(custom, LCD_W - HEADER, 0, HEADER, HEADER)
@@ -190,49 +190,65 @@ local LST = {0,0,0,0,0,0,0,0,0}
 
 -- Draw on the screen before adding gui elements
 function gui.fullScreenRefresh()
-	-- print("TSwitch :full")
+	--print("TSwitch :full")
 	-- Draw header
 	lcd.drawFilledRectangle(0, 0, LCD_W, HEADER, COLOR_THEME_SECONDARY1)
 	lcd.drawText(COL1, HEADER / 2, menu.buttons[options.Config].name, VCENTER + DBLSIZE + libGUI.colors.primary2)
 	lcd.drawText(COL4, HEADER / 2, "Version: " ..version, VCENTER + SMLSIZE);
 	-- update the buttons if switch extern (onetime)
 	if not UPDATE then
-		if getLogicalSwitchValue(options.Switch1LS-1) then
+        local lsname = "ls" .. options.Switch1LS + 0
+        local v = getValue(lsname);
+        if v > 0 then
 			toggleButton1.value = true
 		else
 			toggleButton1.value = false
 		end
-		if getLogicalSwitchValue(options.Switch1LS-0) then
+        local lsname = "ls" .. options.Switch1LS + 1
+        local v = getValue(lsname);
+        if v > 0 then
 			toggleButton2.value = true
 		else
 			toggleButton2.value = false			
 		end
-		if getLogicalSwitchValue(options.Switch1LS+1) then
+        local lsname = "ls" .. options.Switch1LS + 2
+        local v = getValue(lsname);
+        if v > 0 then
 			toggleButton3.value = true
 		else
 			toggleButton3.value = false			
 		end
-		if getLogicalSwitchValue(options.Switch1LS+2) then
+        local lsname = "ls" .. options.Switch1LS + 3
+        local v = getValue(lsname);
+        if v > 0 then
 			toggleButton4.value = true
 		else
 			toggleButton4.value = false			
 		end
-		if getLogicalSwitchValue(options.Switch1LS+3) then
+        local lsname = "ls" .. options.Switch1LS + 4
+        local v = getValue(lsname);
+        if v > 0 then
 			toggleButton5.value = true
 		else
 			toggleButton5.value = false			
 		end
-		if getLogicalSwitchValue(options.Switch1LS+4) then
+        local lsname = "ls" .. options.Switch1LS + 5
+        local v = getValue(lsname);
+        if v > 0 then
 			toggleButton6.value = true
 		else
 			toggleButton6.value = false			
 		end
-		if getLogicalSwitchValue(options.Switch1LS+5) then
+        local lsname = "ls" .. options.Switch1LS + 6
+        local v = getValue(lsname);
+        if v > 0 then
 			toggleButton7.value = true
 		else
 			toggleButton7.value = false			
 		end
-		if getLogicalSwitchValue(options.Switch1LS+6) then
+        local lsname = "ls" .. options.Switch1LS + 7
+        local v = getValue(lsname);
+        if v > 0 then
 			toggleButton8.value = true
 		else
 			toggleButton8.value = false			
@@ -362,45 +378,44 @@ end
 
 -- Draw in widget mode
 function libGUI.widgetRefresh()
-	lcd.drawRectangle(0, 0, zone.w, zone.h, COLOR_THEME_EDIT)
-	lcd.drawText(5, 2, menu.buttons[options.Config].name)
-	if getLogicalSwitchValue(options.Switch1LS - 1) then
-		lcd.drawFilledRectangle(  5, 22, 90, 14, COLOR_THEME_ACTIVE)
-	end
-	if getLogicalSwitchValue(options.Switch1LS + 0) then  
-		lcd.drawFilledRectangle(  5, 37, 90, 14, COLOR_THEME_ACTIVE)
-	end
-	if getLogicalSwitchValue(options.Switch1LS + 1)  then    
-		lcd.drawFilledRectangle(  5, 52, 90, 14, COLOR_THEME_ACTIVE)
-	end
-	if getLogicalSwitchValue(options.Switch1LS + 2)  then    
-		lcd.drawFilledRectangle(  5, 67, 90, 14, COLOR_THEME_ACTIVE)
-	end
-	if getLogicalSwitchValue(options.Switch1LS + 3)  then    
-		lcd.drawFilledRectangle(100, 22, 90, 14, COLOR_THEME_ACTIVE)
-	end
-	if getLogicalSwitchValue(options.Switch1LS + 4)  then    
-		lcd.drawFilledRectangle(100, 37, 90, 14, COLOR_THEME_ACTIVE)
-	end
-	if getLogicalSwitchValue(options.Switch1LS + 5)  then    
-		lcd.drawFilledRectangle(100, 52, 90, 14, COLOR_THEME_ACTIVE)
-	end
-	if getLogicalSwitchValue(options.Switch1LS + 6)  then    
-		lcd.drawFilledRectangle(100, 67, 90, 14, COLOR_THEME_ACTIVE)
-	end
-	lcd.drawText(  6, 21, menu.buttons[options.Config].button1,SMLSIZE)
-	lcd.drawText(  6, 36, menu.buttons[options.Config].button2,SMLSIZE)
-	lcd.drawText(  6, 51, menu.buttons[options.Config].button3,SMLSIZE)
-	lcd.drawText(  6, 66, menu.buttons[options.Config].button4,SMLSIZE)
-	lcd.drawText(101, 21, menu.buttons[options.Config].button5,SMLSIZE)
-	lcd.drawText(101, 36, menu.buttons[options.Config].button6,SMLSIZE)
-	lcd.drawText(101, 51, menu.buttons[options.Config].button7,SMLSIZE)
-	lcd.drawText(101, 66, menu.buttons[options.Config].button8,SMLSIZE)
-	UPDATE = false
+
 end
 
 -- This function is called from the refresh(...) function in the main script
 function widget.refresh(event, touchState)
+--print("TSwitch :refresh")
+    if event == nil then
+	--print("TSwitch :refresh auch gemacht")
+		lcd.drawRectangle(0, 0, zone.w, zone.h, COLOR_THEME_EDIT)
+		lcd.drawText(5, 2, menu.buttons[options.Config].name)
+		--Button 0-3
+		for variable = 0, 3 do	
+			local lsname = "ls" .. options.Switch1LS + variable
+			local v = getValue(lsname);
+			if v > 0 then	
+				lcd.drawFilledRectangle(  5, 22 + (variable*15), 90, 14, COLOR_THEME_ACTIVE)
+			end
+		end	
+		--Button 4-7
+		for variable = 4, 7 do	
+			local lsname = "ls" .. options.Switch1LS + variable
+			local v = getValue(lsname);
+			if v > 0 then	
+				lcd.drawFilledRectangle(  100, 22 + ((variable-4)*15), 90, 14, COLOR_THEME_ACTIVE)
+			end
+		end	
+			
+		lcd.drawText(  6, 21, menu.buttons[options.Config].button1,SMLSIZE)
+		lcd.drawText(  6, 36, menu.buttons[options.Config].button2,SMLSIZE)
+		lcd.drawText(  6, 51, menu.buttons[options.Config].button3,SMLSIZE)
+		lcd.drawText(  6, 66, menu.buttons[options.Config].button4,SMLSIZE)
+		lcd.drawText(101, 21, menu.buttons[options.Config].button5,SMLSIZE)
+		lcd.drawText(101, 36, menu.buttons[options.Config].button6,SMLSIZE)
+		lcd.drawText(101, 51, menu.buttons[options.Config].button7,SMLSIZE)
+		lcd.drawText(101, 66, menu.buttons[options.Config].button8,SMLSIZE)
+		UPDATE = false
+        return
+    end
 	gui.run(event, touchState)
 end
 
@@ -408,12 +423,10 @@ function widget.update(opt)
 	options = opt
     for variable = -1, 6 do
 		local ls = model.getLogicalSwitch(options.Switch1LS + variable);
-			--set setLogicalSwitch to STICKY and v1 to it self (because start up set to false) will be fix in next version (fix in 2.7)
+			--set setLogicalSwitch to STICKY 
 		if (ls.func ~= LS_FUNC_STICKY) then
 			--model.setLogicalSwitch(options.Switch1LS + variable, {func = LS_FUNC_STICKY,v1 = 85 + options.Switch1LS + variable});
 			model.setLogicalSwitch(options.Switch1LS + variable, {func = LS_FUNC_STICKY});
-			setStickySwitch(options.Switch1LS + variable, false);
-		else
 			setStickySwitch(options.Switch1LS + variable, false);
 		end	
 	end
